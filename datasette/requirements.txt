@@ -1,0 +1,6 @@
+datasette
+black
+httpx
+csvkit
+datasette-vega
+datasette-publish-vercel

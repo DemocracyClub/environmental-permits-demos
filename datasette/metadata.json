@@ -1,0 +1,25 @@
+{
+  "title": "Environmental permit data",
+  "description": "Exploring some data",
+  "plugins": {
+    "datasette-cluster-map": {
+      "latitude_column": "lat",
+      "longitude_column": "long"
+
+    }
+  },
+  "databases": {
+    "eps": {
+      "tables": {
+        "cleaned_with_points": {
+          "facets": ["local_authority", "register"]
+        }
+      },
+      "queries": {
+        "data_map": {
+          "sql": "select json_object('title', register, 'link', url, 'description', label) as popup, local_authority, lat, long from cleaned_with_points where local_authority like '%' || :local_authority || '%'"
+        }
+      }
+    }
+  }
+}
